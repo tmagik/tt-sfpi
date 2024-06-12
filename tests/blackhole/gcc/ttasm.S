@@ -6,7 +6,7 @@
 
 	.file	"limits.cc"
 	.option nopic
-	.attribute arch, "rv32i2p0_m2p0_l2p0"
+	.attribute arch, "rv32i2p0_u2p0"
 	.attribute unaligned_access, 0
 	.attribute stack_align, 16
 	.text
