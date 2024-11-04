@@ -42,6 +42,7 @@ get-hash () {
     else
 	output="$(hostname):$(pwd)"
 	remotebranch=${upstream}
+	warning=true
     fi
     local localbranch="$(echo "$info" | sed 's/## \([^ ]*\) \?.*/\1/')"
     if test "$localbranch" != "$info" ; then
