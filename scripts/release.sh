@@ -22,4 +22,4 @@ cd build
 find sfpi/compiler -type f -executable -exec file {} \; | grep '^[^ ]*:  *ELF 64-bit ' | cut -d: -f1 | xargs strip -g
 
 tar czf sfpi-release.tgz sfpi
-md5sum sfpi-release.tgz > md5.sum
+md5sum sfpi-release.tgz > sfpi.md5

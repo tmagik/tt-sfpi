@@ -15,6 +15,7 @@ get-hash () {
     local info=$(echo "$st" | head -1)
     local dirty=false
     test "$st" != "$info" && dirty=true
+    local warning=false
     # info is something like '## main...origin/main [ahead 3]'
     # or '## HEAD (no branch)' for a detached
     if test "$info" = "## HEAD (no branch)" ; then
@@ -34,6 +35,7 @@ get-hash () {
     if test "$info" = "$upstream" ; then
 	output="$(hostname):$(pwd)"
 	remotebranch=""
+	warning=true
     elif url=$(git -C $dir remote get-url "${upstream%%/*}" 2>/dev/null) ; then
 	output="$url"
 	remotebranch="${upstream#*/}"
@@ -58,6 +60,7 @@ get-hash () {
 
     local ahead=$(echo "$info" | sed 's/.*\[ahead \([0-9]\+\)].*/\1/')
     if test "$info" != "$ahead" ; then
+	warning=true
 	if test "$upstream" &&
 		org=$(git -C $dir rev-parse --short=8 "$upstream" 2>/dev/null) ; then
 	    output+=" [$org+$ahead]"
@@ -66,8 +69,12 @@ get-hash () {
 	fi
     fi
     $dirty && output+=" dirty"
+    $dirty && warning=true
 
     echo "$dir $output"
+    if $warning ; then
+	echo "*** WARNING: $dir $output IS NOT UPSTREAM ***" 1>&2
+    fi
 }
 
 get-hash .
