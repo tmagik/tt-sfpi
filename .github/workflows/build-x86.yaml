@@ -1,0 +1,9 @@
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - run: git submodules update --init --recursive
+      - build: scripts/build.sh
+      - release: scripts/release.sh
