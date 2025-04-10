@@ -19,7 +19,6 @@ jobs:
 	with:
  	   name: x86_64-tests
 	   path: build/g++.sum
-	   compression-level: 0
       - name: Release toolchain
         run: scripts/release.sh
       - name: Upload build
