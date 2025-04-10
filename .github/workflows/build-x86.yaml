@@ -10,4 +10,21 @@ jobs:
             submodules: recursive
       - name: Build toolchain
         run: scripts/build.sh
-      - run: scripts/release.sh
+      - name: Build test harness
+        run: scripts/build.sh --test-infra
+      - name: Run tests
+        run: scripts/build.sh --test-tt
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+	with:
+ 	   name: x86_64-tests
+	   path: build/g++.sum
+	   compression-level: 0
+      - name: Release toolchain
+        run: scripts/release.sh
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+	with:
+ 	   name: x86_64-build
+	   path: build/sfpi-*
+	   compression-level: 0
