@@ -4,6 +4,10 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - run: git submodules update --init --recursive
-      - build: scripts/build.sh
-      - release: scripts/release.sh
+      - name: Checkout repo & submodules
+        uses: actions/checkout@v4
+        with:
+            submodules: recursive
+      - name: Build toolchain
+        run: scripts/build.sh
+      - run: scripts/release.sh
