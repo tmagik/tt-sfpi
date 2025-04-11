@@ -9,9 +9,8 @@ jobs:
         with:
           submodules: recursive
       - name:Installl packages
-         run: |
-           sudo apt-get update
-           sudo apt-get -y install expect
+        run: sudo apt-get update
+        run: sudo apt-get -y install expect
       - name: Build test harness
         run: scripts/build.sh --infra
       - name: Build toolchain
