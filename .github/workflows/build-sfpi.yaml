@@ -2,11 +2,12 @@ on:
   workflow_dispatch:
     inputs:
       architecture:
-	default: x86_64
-	type: choice
-	  options:
-	    - x86_64
-	    - aarch64
+        required: false
+        default: x86_64
+        type: choice
+          options:
+            - x86_64
+            - aarch64
 
 run-name: Build $${ inputs.architecture }} SFPI
 jobs:
@@ -34,7 +35,7 @@ jobs:
         with:
           name: ${{ inputs.architecture }}-build
           path: build/sfpi-*
-	  compression-level: 0
+          compression-level: 0
       - name: Upload tests
         uses: actions/upload-artifact@v4
         with:
