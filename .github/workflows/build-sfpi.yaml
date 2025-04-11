@@ -14,7 +14,7 @@ on:
 run-name: Build $${ inputs.architecture }} SFPI
 jobs:
   build:
-    runs-on: ubuntu-22.04${{ inputs.architecture == 'aarch64' && -arm' || ''}}
+    runs-on: ubuntu-22.04${{ inputs.architecture == 'aarch64' && '-arm' || ''}}
     steps:
       - name: Checkout repo & submodules
         uses: actions/checkout@v4
