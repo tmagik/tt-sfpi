@@ -5,9 +5,9 @@ on:
         required: false
         default: x86_64
         type: choice
-          options:
-            - x86_64
-            - aarch64
+        options:
+          - x86_64
+          - aarch64
 
 run-name: Build $${ inputs.architecture }} SFPI
 jobs:
