@@ -2,7 +2,6 @@ on:
   workflow_dispatch:
     inputs:
       architecture:
-        required: true
 	default: x86_64
 	type: choice
 	  options:
