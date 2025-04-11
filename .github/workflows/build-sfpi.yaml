@@ -1,3 +1,5 @@
+name: "Build SFPI"
+
 on:
   workflow_dispatch:
     inputs:
