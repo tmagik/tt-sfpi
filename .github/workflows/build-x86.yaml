@@ -11,7 +11,7 @@ jobs:
       - name: Build toolchain
         run: scripts/build.sh
       - name: Build test harness
-        run: scripts/build.sh --test-infra
+        run: scripts/build.sh --infra
       - name: Run tests
         run: scripts/build.sh --test-tt
       - name: Upload test results
