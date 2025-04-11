@@ -10,7 +10,6 @@ on:
         options:
           - x86_64
           - aarch64
-  pull-request:
 
 run-name: Build $${ inputs.architecture }} SFPI
 jobs:
