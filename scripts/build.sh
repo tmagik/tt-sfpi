@@ -8,7 +8,7 @@ if ! test "$BIN" -ef "scripts"; then
     exit 1
 fi
 
-NCPUS=$(grep -c '^processor' /proc/cpuinfo)
+NCPUS=$(nproc)
 if ! test "$NCPUS" ; then
     NCPUS=1
 fi
